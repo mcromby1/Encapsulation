@@ -5,12 +5,11 @@
  */
 package StudentLab;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  *
- * @author Matthew Cromby
+ * @author Jim Lombardo
  */
 public class HumanResourceRep {
 
@@ -19,7 +18,7 @@ public class HumanResourceRep {
     private Employee employee;
 
     public HumanResourceRep() {
- 
+
     }
 
     public Date getCurrentDate() {
@@ -29,25 +28,22 @@ public class HumanResourceRep {
     public void setCurrentDate(Date currentDate) {
         this.currentDate = currentDate;
     }
-    
-    public void hireEmployee(Employee employee){
+
+    public void hireEmployee(Employee employee) {
         this.employee = employee;
     }
-    
-    public void startOrientation(){
+
+    public void startOrientation() {
         employee.orientation();
     }
-    
-    public String getStatus() {
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(currentDate);
 
+    public String getStatus() {
         if (employee.isMetWithHr() && employee.isMetDeptStaff()
                 && employee.isReviewedDeptPolicies() && employee.isMovedIn()) {
-            return "Orientation is completed on: " + fmtDate;
+            return "Orientation is completed on: " + employee.getFmtDate();
         } else {
-            return fmtDate + ": Orientation in progress...";
+            return employee.getFmtDate() + ": Orientation in progress...";
         }
     }
-    
+
 }

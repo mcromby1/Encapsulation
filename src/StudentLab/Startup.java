@@ -1,11 +1,13 @@
 package StudentLab;
 
+import java.util.Date;
+
 /**
  * In this lab your challenge is to fix the code in both classes to use
  * proper encapsulation and the other best practices as explained by 
  * your instructor.
  *
- * @author      Matthew Cromby
+ * @author      Jim Lombardo, revisons: Matthew Cromby
  * @version     1.01
  */
 public class Startup {
@@ -20,7 +22,7 @@ public class Startup {
             may need to create a new class that talks to Employee. This does
             not have to be a GUI class.
         */
-        
+
         Employee employee = new Employee("Peter", "Piper", "333-1234");
         
         HumanResourceRep hRR = new HumanResourceRep();

@@ -4,14 +4,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * In this lab your challenge is to fix the code in both classes to use
- * proper encapsulation and the other best practices as explained by 
- * your instructor.
+ * In this lab your challenge is to fix the code in both classes to use proper
+ * encapsulation and the other best practices as explained by your instructor.
  *
- * @author      Matthew Cromby
- * @version     1.01
+ * @author Jim Lombardo
+ * @version 1.01
  */
 public class Employee {
+
     private String firstName;
     private String lastName;
     private String ssn;
@@ -21,16 +21,18 @@ public class Employee {
     private boolean reviewedDeptPolicies;
     private boolean movedIn;
     private String cubeId;
-    private Date currentDate;
-    
-    SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(currentDate);
+
+    private final Date currentDate;
+    private final SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+    private final String fmtDate;
+    //private final String fmtDate = sdf.format(currentDate);
 
     public Employee(String firstName, String lastName, String ssn) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.ssn = ssn;
         currentDate = new Date();
+        fmtDate = sdf.format(currentDate);
     }
 
     public String getFirstName() {
@@ -68,10 +70,12 @@ public class Employee {
     public void setCubeId(String cubeId) {
         this.cubeId = cubeId;
     }
-    
-    
-    
-    public void orientation(){
+
+    public String getFmtDate() {
+        return fmtDate;
+    }
+
+    public void orientation() {
         meetWithHrForBenefitAndSalryInfo();
         meetDepartmentStaff();
         reviewDeptPolicies();
@@ -80,16 +84,14 @@ public class Employee {
 
     // Assume this must be performed first
     public void meetWithHrForBenefitAndSalryInfo() {
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(currentDate);
-        System.out.println("Met with Hr on " + fmtDate);
+        System.out.println("Met with Hr on " + sdf.format(currentDate));
         metWithHr = true;
     }
 
     // Assume this is must be performed second
     public void meetDepartmentStaff() {
-        if(metWithHr) {
-            System.out.println("Met with Dept. Staff on " + fmtDate);
+        if (metWithHr) {
+            System.out.println("Met with Dept. Staff on " + sdf.format(currentDate));
             metDeptStaff = true;
         } else {
             System.out.println("Sorry, you cannot meet with "
@@ -99,8 +101,8 @@ public class Employee {
 
     // Assume this must be performed third
     public void reviewDeptPolicies() {
-        if(metWithHr && metDeptStaff) {
-            System.out.println("Reviewed Dept. Policies on " + fmtDate);
+        if (metWithHr && metDeptStaff) {
+            System.out.println("Reviewed Dept. Policies on " + sdf.format(currentDate));
             reviewedDeptPolicies = true;
         } else {
             System.out.println("Sorry, you cannot review "
@@ -111,8 +113,8 @@ public class Employee {
 
     // Assume this must be performed 4th
     public void moveIntoCubicle(String cubeId) {
-        if(metWithHr && metDeptStaff && reviewedDeptPolicies) {
-            System.out.println("Moved into cube on " + fmtDate);
+        if (metWithHr && metDeptStaff && reviewedDeptPolicies) {
+            System.out.println("Moved into cube on " + sdf.format(currentDate));
             this.cubeId = cubeId;
             this.movedIn = true;
         } else {
@@ -125,11 +127,11 @@ public class Employee {
     }
 
     public String getStatus() {
-        if(metWithHr && metDeptStaff
-           && reviewedDeptPolicies && movedIn) {
-            return "Orientation is completed on: " + fmtDate;
+        if (metWithHr && metDeptStaff
+                && reviewedDeptPolicies && movedIn) {
+            return "Orientation is completed on: " + sdf.format(currentDate);
         } else {
-            return fmtDate + ": Orientation in progress...";
+            return sdf.format(currentDate) + ": Orientation in progress...";
         }
     }
 }
