@@ -1,6 +1,5 @@
 package StudentLab;
 
-import lab1.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -9,7 +8,7 @@ import java.util.Date;
  * proper encapsulation and the other best practices as explained by 
  * your instructor.
  *
- * @author      Jim Lombardo, WCTC Instructor
+ * @author      Matthew Cromby
  * @version     1.01
  */
 public class Employee {

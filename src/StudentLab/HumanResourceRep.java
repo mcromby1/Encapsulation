@@ -5,13 +5,12 @@
  */
 package StudentLab;
 
-import lab1.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  *
- * @author Matthew
+ * @author Matthew Cromby
  */
 public class HumanResourceRep {
 
